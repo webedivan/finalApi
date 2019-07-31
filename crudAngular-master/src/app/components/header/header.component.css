@@ -1,0 +1,30 @@
+ul {
+    background: url(../../../assets/img/menu.jpg);
+}
+
+ul {
+    list-style: none;
+    overflow: hidden;
+}
+
+ul li {
+    float: left;
+    font-family: Arial, sans-serif;
+    font-size: 16px;
+}
+
+ul li a {
+    display: block;
+    padding: 20px;
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+ul li:hover {
+    background: #3ead47;
+}
+
+li {
+    list-style: none;
+}

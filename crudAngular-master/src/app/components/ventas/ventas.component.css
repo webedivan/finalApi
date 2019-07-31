@@ -1,0 +1,25 @@
+h1 {
+    font-family: cursive;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.table {
+    color: white;
+    font-weight: bold;
+}
+
+.form-group {
+    color: white;
+    font-weight: bold;
+}
+
+.btn {
+    text-align: center;
+    margin: 20px;
+    margin-left: 45%;
+    font-weight: bold;
+    background-color: red;
+}

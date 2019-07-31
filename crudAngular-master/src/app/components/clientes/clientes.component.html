@@ -1,0 +1,87 @@
+<br>
+<h1 class="title">CLIENTES</h1>
+<br>
+
+<button (click)="mostrarAgregar()" data-toggle="modal" data-target="#exampleModal" class="agregar btn btn-success">
+  <i class="fa fa-plus"></i> Agregar
+</button>
+<br>
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>DNI</th>
+            <th>Apellidos</th>
+            <th>Nombres</th>
+            <th>Estado</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let cliente of lista">
+            <td>{{ cliente.idCliente }}</td>
+            <td>{{ cliente.dni }}</td>
+            <td>{{ cliente.apellidoPaterno + ' ' + cliente.apellidoMaterno }}</td>
+            <td>{{ cliente.nombres }}</td>
+            <td>{{ cliente.estadoCliente }}</td>
+            <td>
+                <div class="btn-group btn-group-sm">
+                    <button (click)="mostrarModificar(cliente)" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-warning">
+            <i class="fa fa-pencil"></i>
+          </button>
+                    <button (click)="mostrarEliminar(cliente)" type="button" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade " id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Agregar cliente</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form [noValidate]="false" (submit)="agregarOModificar()">
+                    <div class="form-group">
+                        <label for="dni" class="col-form-label">DNI:</label>
+                        <input required type="text" class="form-control" id="dni" name="dni" [(ngModel)]="cliente.dni" maxlength="8" pattern="\d+">
+                    </div>
+                    <div class="form-group">
+                        <label for="paterno" class="col-form-label">Apellido Paterno:</label>
+                        <input required type="text" class="form-control" id="paterno" name="paterno" [(ngModel)]="cliente.apellidoPaterno" maxlength="35">
+                    </div>
+                    <div class="form-group">
+                        <label for="materno" class="col-form-label">Apellido Materno:</label>
+                        <input required type="text" class="form-control" id="materno" name="materno" [(ngModel)]="cliente.apellidoMaterno" maxlength="35">
+                    </div>
+                    <div class="form-group">
+                        <label for="nombres" class="col-form-label">Nombres:</label>
+                        <input required type="text" class="form-control" id="nombres" name="nombres" [(ngModel)]="cliente.nombres" maxlength="35">
+                    </div>
+                    <div class="form-group">
+                        <label for="estado" class="col-form-label">Estado:</label>
+                        <select class="form-control" id="estado" name="estado" [(ngModel)]="cliente.estadoCliente">
+                            <option value="activo">activo</option>
+                            <option value="inactivo">inactivo</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-success">
+                        {{ cliente.idCliente ? 'Modificar' : 'Agregar' }}
+                    </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

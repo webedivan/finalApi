@@ -1,0 +1,16 @@
+img {
+    width: 60px;
+}
+
+footer {
+    padding-top: 10px;
+    padding-left: 20px;
+    background: url(../../../assets/img/menu.jpg);
+    color: white;
+    margin-top: 10px;
+    width: 98%;
+}
+
+.autor {
+    text-align: right;
+}

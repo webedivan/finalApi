@@ -1,0 +1,75 @@
+<br>
+<h1 class="title">PRODUCTOS</h1>
+<br>
+
+<button (click)="mostrarAgregar()" data-toggle="modal" data-target="#modalFormProducto" class="agregar btn btn-success">
+  <i class="fa fa-plus"></i> Agregar
+</button>
+<br>
+<br>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Stock</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let producto of lista">
+            <td>{{ producto.idProducto }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio}}</td>
+            <td>{{ producto.stock }}</td>
+            <td>
+                <div class="btn-group btn-group-sm">
+                    <button (click)="mostrarModificar(producto)" type="button" data-toggle="modal" data-target="#modalFormProducto" class="btn btn-warning">
+            <i class="fa fa-pencil"></i>
+          </button>
+                    <button (click)="mostrarEliminar(producto)" type="button" class="btn btn-danger">
+            <i class="fa fa-trash"></i>
+          </button>
+                </div>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="modal fade " id="modalFormProducto" tabindex="-1" role="dialog" aria-labelledby="modalFormProductoLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="modalFormProductoLabel">Agregar Producto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+            </div>
+            <div class="modal-body">
+                <form (submit)="agregarOModificar()" [noValidate]="false">
+                    <div class="form-group">
+                        <label for="descripcion" class="col-form-label">Descripcion:</label>
+                        <input required type="text" class="form-control" id="dni" name="descripcion" [(ngModel)]="producto.descripcion">
+                    </div>
+                    <div class="form-group">
+                        <label for="precio" class="col-form-label">Precio:</label>
+                        <input required type="text" class="form-control" id="precio" name="precio" [(ngModel)]="producto.precio">
+                    </div>
+                    <div class="form-group">
+                        <label for="stock" class="col-form-label">Stock:</label>
+                        <input required type="text" class="form-control" id="stock" name="stock" [(ngModel)]="producto.stock">
+                    </div>
+
+                    <button class="btn btn-success">
+            {{ producto.idProducto ? 'Modificar' : 'Agregar' }}
+          </button>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
+            </div>
+        </div>
+    </div>
+</div>

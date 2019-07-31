@@ -1,0 +1,52 @@
+<br>
+<h1 class="title">VENTAS</h1>
+<br>
+<form (submit)="guardarVenta()">
+    <div class="form-group">
+        <label for="fecha">FECHA:</label>
+        <input type="datetime" class="form-control" id="fecha" name="fecha" readonly [(ngModel)]="venta.fechaVenta">
+    </div>
+    <div class="form-group">
+        <label for="cliente">CLIENTE:</label>
+        <select class="form-control" id="cliente" name="cliente" [(ngModel)]="venta.cliente.idCliente">
+            <option value="" selected disabled>Seleccione el cliente</option>
+            <option *ngFor="let cliente of listaClientes" [value]="cliente.idCliente">{{ cliente.apellidoPaterno + ' ' + cliente.apellidoMaterno + ', ' + cliente.nombres }}</option>
+        </select>
+    </div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th></th>
+                <th>Descripción</th>
+                <th>Precio</th>
+                <th>Cantidad</th>
+                <th>Total (unitario)</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let producto of listaProductos; let i = index">
+                <td>
+                    <input type="checkbox" name="lleva" [(ngModel)]="detalles[i].lleva">
+                    <input type="hidden" name="idProducto" [(ngModel)]="detalles[i].idProducto">
+                </td>
+                <td>{{ producto.descripcion }}</td>
+                <td>{{ producto.precio | currency:'PEN':'S/ ' }}</td>
+                <td><input type="number" class="form-control" name="cantidad" [(ngModel)]="detalles[i].cantidad" (ngModelChange)="cambiado()"></td>
+                <td>{{ producto.precio * detalles[i].cantidad | currency:'PEN':'S/ ' }}</td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <th>TOTAL</th>
+                <td>{{ total | currency:'PEN':'S/ ' }}</td>
+            </tr>
+        </tfoot>
+    </table>
+
+    <button class="btn btn-primary">
+        <i class="fa fa-save"></i> Guardar
+    </button>
+</form>

@@ -1,0 +1,17 @@
+h1 {
+    font-family: cursive;
+    font-size: 24px;
+    text-align: center;
+    color: white;
+    font-weight: bold;
+}
+
+.table {
+    color: white;
+    font-weight: bold;
+}
+
+.agregar {
+    font-weight: bold;
+    background-color: red;
+}
